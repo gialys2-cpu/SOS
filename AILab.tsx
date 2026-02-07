@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { generatePostIdeas } from '../services/geminiService';
-import { AIResponse, PackageType } from '../types';
+import { AIResponse, PackageType, PostIdea } from '../types';
 
 const AILab: React.FC = () => {
   const [niche, setNiche] = useState('');
@@ -107,7 +107,7 @@ const AILab: React.FC = () => {
                   </div>
 
                   <div className="grid md:grid-cols-3 gap-4">
-                    {result.ideas.map((idea, i) => (
+                    {result.ideas.map((idea: PostIdea, i: number) => (
                       <div key={i} className="bg-white/5 rounded-2xl p-4 border border-white/5 hover:border-red-500/20 transition-all group">
                         <div className="flex justify-between items-center mb-3">
                           <span className="text-[10px] font-bold bg-white/10 px-2 py-0.5 rounded uppercase tracking-widest text-white/50">{idea.platform}</span>
@@ -116,7 +116,7 @@ const AILab: React.FC = () => {
                         <h5 className="font-bold text-sm mb-2 text-white group-hover:text-red-400 transition-colors line-clamp-2">"{idea.hook}"</h5>
                         <p className="text-[11px] text-white/40 mb-4 line-clamp-3 leading-relaxed">{idea.caption}</p>
                         <div className="flex flex-wrap gap-1">
-                          {idea.hashtags.map((tag, j) => (
+                          {idea.hashtags.map((tag: string, j: number) => (
                             <span key={j} className="text-[9px] text-red-500/60 font-mono">#{tag}</span>
                           ))}
                         </div>
